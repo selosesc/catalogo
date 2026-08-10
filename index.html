@@ -1274,7 +1274,7 @@ const chipsEl = document.getElementById('chips');
   199: {buy: 'https://portal.sescsp.org.br/loja/2709_COM+A+CORDA+TODA'},
   200: {buy: 'https://portal.sescsp.org.br/loja/781_ESPOLETA', listen: 'https://open.spotify.com/album/0ToUYg4HYFVYOjUqNSlVtl'},
   201: {buy: 'https://portal.sescsp.org.br/loja/776_CRIANCAS+CRIONCAS', listen: 'https://open.spotify.com/intl-pt/album/4duFaYTyvoKTl8E54Y628x?si=Y60fhUKmTW67dFD4PmaMBw'},
-  202: {listen: 'https://tratore.ffm.to/vadico'},
+  202: {buy: 'https://portal.sescsp.org.br/loja/12418_BOX+VADICO', listen: 'https://tratore.ffm.to/vadico'},
   203: {listen: 'https://open.spotify.com/playlist/3kDDUVreOCo5bPVgAcjCKh?si=e75856e8eef9430e'},
   204: {listen: 'https://tratore.ffm.to/sssnenetrio'},
   205: {listen: 'https://tratore.ffm.to/oscaravelhos'},
@@ -1610,7 +1610,25 @@ function buildExport(){
   src = spliceMarked(src, '/*__D0__*/', '/*__D1__*/', serializeData());
   src = spliceMarked(src, '/*__C0__*/', '/*__C1__*/', serializeCovers());
   src = spliceMarked(src, '/*__L0__*/', '/*__L1__*/', serializeLinks());
-  src = spliceMarked(src, '/*__S0__*/', '/*__S1__*/', serializeSiteConfig());
+  src = spliceMarked(src, 'const siteConfig = {
+ "title": "Catálogo Selo Sesc",
+ "subtitle": "Nosso catálogo é um modo prático para que tanto o público quanto os profissionais do mercado fonográfico possam ter acesso às informações básicas dos produtos Selo Sesc.",
+ "headerLinks": [],
+ "colors": {
+  "bg": "#0d0d0d",
+  "panel": "#161616",
+  "card": "#1a1a1a",
+  "ink": "#f5f2ea",
+  "muted": "#9b968c",
+  "line": "#2b2b2b",
+  "c-pop": "#f7941e",
+  "c-inst": "#ffd23f",
+  "c-conc": "#5ec9a0",
+  "c-cria": "#7fc4e8",
+  "c-esp": "#e85d9a",
+  "c-av": "#e8563f"
+ }
+};', serializeSiteConfig());
   src = spliceMarked(src, '/*__K0__*/', '/*__K1__*/', serializeContain());
   return src;
 }
