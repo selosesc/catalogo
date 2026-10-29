@@ -1374,6 +1374,25 @@ const chipsEl = document.getElementById('chips');
 
 /*__K0__*/const containCovers = new Set([52,79,82,84,86,87,88,90,95,121,125,130,138,139,144,162,165,170,174,176,177,178,179,180,181,182,186,187,190,195,196,197,199,218,248,250,251,252,253,255,256,257,258,259,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,306]);/*__K1__*/
 
+/*__S0__*/const siteConfig = {
+ "title": "Catálogo Selo Sesc",
+ "subtitle": "Nosso catálogo é um modo prático para que tanto o público quanto os profissionais do mercado fonográfico possam ter acesso às informações básicas dos produtos Selo Sesc.",
+ "headerLinks": [],
+ "colors": {
+  "bg": "#0d0d0d",
+  "panel": "#161616",
+  "card": "#1a1a1a",
+  "ink": "#f5f2ea",
+  "muted": "#9b968c",
+  "line": "#2b2b2b",
+  "c-pop": "#f7941e",
+  "c-inst": "#ffd23f",
+  "c-conc": "#5ec9a0",
+  "c-cria": "#7fc4e8",
+  "c-esp": "#e85d9a",
+  "c-av": "#e8563f"
+ }
+};/*__S1__*/
 const genreClass = {
   'Música Popular':'g-pop',
   'Música Instrumental':'g-inst',
@@ -1569,10 +1588,10 @@ function initAppearance(){
   fillAppearance();
 }
 function serializeSiteConfig(){
-  return 'const siteConfig = ' + JSON.stringify({
+  return '/*__S0__*/const siteConfig = ' + JSON.stringify({
     title: siteConfig.title, subtitle: siteConfig.subtitle,
     headerLinks: siteConfig.headerLinks, colors: siteConfig.colors
-  }, null, 1) + ';';
+  }, null, 1) + ';/*__S1__*/';
 }
 
 function serializeLinks(){
@@ -1598,25 +1617,7 @@ function buildExport(){
   src = spliceMarked(src, '/*__D0__*/', '/*__D1__*/', serializeData());
   src = spliceMarked(src, '/*__C0__*/', '/*__C1__*/', serializeCovers());
   src = spliceMarked(src, '/*__L0__*/', '/*__L1__*/', serializeLinks());
-  src = spliceMarked(src, `const siteConfig = {
- "title": "Catálogo Selo Sesc",
- "subtitle": "Nosso catálogo é um modo prático para que tanto o público quanto os profissionais do mercado fonográfico possam ter acesso às informações básicas dos produtos Selo Sesc.",
- "headerLinks": [],
- "colors": {
-  "bg": "#0d0d0d",
-  "panel": "#161616",
-  "card": "#1a1a1a",
-  "ink": "#f5f2ea",
-  "muted": "#9b968c",
-  "line": "#2b2b2b",
-  "c-pop": "#f7941e",
-  "c-inst": "#ffd23f",
-  "c-conc": "#5ec9a0",
-  "c-cria": "#7fc4e8",
-  "c-esp": "#e85d9a",
-  "c-av": "#e8563f"
- }
-};`, serializeSiteConfig());
+  src = spliceMarked(src, '/*__S0__*/', '/*__S1__*/', serializeSiteConfig());
   src = spliceMarked(src, '/*__K0__*/', '/*__K1__*/', serializeContain());
   return src;
 }
